@@ -38,4 +38,3 @@ currency_rate
 
 
 
-
