@@ -2,6 +2,12 @@ require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 
+
+############# IMPORTANT !!!!
+PAGE_URL = "https://www.voxpublic.org/spip.php?page=annuaire&cat=deputes&pagnum=600"
+############# IMPORTANT !!!!
+#
+
 def all_repute_full_name
 
 	page = Nokogiri::HTML(open("https://www.voxpublic.org/spip.php?page=annuaire&cat=deputes&pagnum=600"))
@@ -20,7 +26,7 @@ def all_repute_full_name
 		full_name << full_name_m[0].split[1...3]
 
 		full_name_final << full_name[0][0..2]
-		
+		puts full_name_final.inspect
 		
 	####  FIN  SCRAP NOM PRENOM
 	#
@@ -32,7 +38,7 @@ def all_repute_full_name
 	page.xpath('//*[@id="content"]/div[1]/ul[1]/li[5]/a[1]').each do |x|
                  liste_mail <<  x["href"][7...50]
          end
-	
+	puts liste_mail
 	####  FIN  SCRAP MAIL
 	#
 	
@@ -50,6 +56,27 @@ end
 all_repute_full_name
 
 
+
+
+
+def boucle_info(array)
+
+var10 = array.length
+var11 = 0
+name_depute = []
+	while var10 > 0
+		if name_depute
+		name_depute << array[var11][22..54]
+		var10 -= 1
+		var11 += 1
+	end
+	end
+	puts name_depute
+end
+#boucle_info(chain1)
+
+
+
 def chain1
 page = Nokogiri::HTML(open("https://www.voxpublic.org/spip.php?page=annuaire&cat=deputes&pagnum=600"))
 	
@@ -61,15 +88,11 @@ page = Nokogiri::HTML(open("https://www.voxpublic.org/spip.php?page=annuaire&cat
 
 	
 		liste_mail << page.xpath('//li[5]/a[1]').text
-        full_name_m << page.xpath('//li[1]/h2').text.gsub('Mme ', ' ').gsub('M ', ' ')
+        full_name_m << page.xpath('//li[1]/h2').text
 		
 			
 	
-		array_1 = [["first_name","last_name", "email"]]
-		
-			
-			
-		array_1 = array_1 * 557
+		array_1 = ["first_name","last_name", "email"]
 		full_name = []
 		full_name_final = []
 
@@ -81,26 +104,21 @@ page = Nokogiri::HTML(open("https://www.voxpublic.org/spip.php?page=annuaire&cat
 		#puts liste_mail[0][11...-74].split.length
 		
 
-		
+		full_name << full_name_m[0].split("Mme ")
 		
 
 		liste_mail_custom << liste_mail[0][11...-74].split(" ")
-		#full_name_final << full_name_m.split('')
-		#puts liste_mail_custom[0].class
-		full_name_final << full_name_m[0].split(" ").flatten
 
 		#puts liste_mail_custom
-		
-		a = Hash[array_1[0].zip(full_name_final[0])]
-		puts full_name_final
-		puts liste_mail_custom
-		#puts full_name_final.inspect
-		#puts liste_mail_custom.inspect
+		puts full_name[0]
+
+		#puts liste_mail
 
 
 
 
 end
 
-chain1
-all_repute_full_name
+#chain1
+
+

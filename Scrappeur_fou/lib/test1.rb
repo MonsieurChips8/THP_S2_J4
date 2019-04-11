@@ -44,3 +44,14 @@ puts page.css('div#reference a') 		# PUTS DIV = reference > a
 
 
 
+//*[@id="id-bitcoin"]/td[2]
+
+
+
+
+
+
+
+
+
+
