@@ -15,3 +15,5 @@ SCRAPPING DE SITE WEB
 https://www.engineyard.com/blog/getting-started-with-nokogiri
 http://ruby.bastardsbook.com
 http://thehackingproject.herokuapp.com/dashboard/weeks/2/days/4?locale=fr
+
+j'ai fait la guerre au scrapping, et ba j'ai pas gagné xD
