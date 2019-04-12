@@ -10,6 +10,10 @@ PAGE_URL = "https://coinmarketcap.com/all/views/all/"
 
 townhall_url = "http://www.annuaire-des-mairies.com/95/ermont.html"
 
+
+# GET TOWNHALL EMAIL= Programme pour récupérer Nom et Mail 
+# sur une page.
+#
 def get_townhall_email(townhall_url)
 
 page = Nokogiri::HTML(open("#{townhall_url}"))
@@ -28,9 +32,10 @@ return a
 
 end
 
-#get_townhall_email(townhall_url)
 
 
+# GET TOWNHALL URL = 
+# Programme pour avoir une liste des URL de chaque mairie du 95
 
 def get_townhall_urls
 page = Nokogiri::HTML(open("http://www.annuaire-des-mairies.com/val-d-oise.html"))
@@ -47,6 +52,7 @@ liste_lien_villes = []
 end
 
  
+# BOUCLE pour intégrer les deux fonctions
 get_townhall_urls.each do |o| get_townhall_email(o)
 
 end

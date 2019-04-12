@@ -2,7 +2,11 @@ require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 
-def all_repute_full_name
+
+# ALL DEPUTE NAME = 
+# Programme pour sortir 1 hash avec Nom prénom mail.
+# 
+def all_depute_full_name
 
 	page = Nokogiri::HTML(open("https://www.voxpublic.org/spip.php?page=annuaire&cat=deputes&pagnum=600"))
 	
@@ -47,8 +51,10 @@ def all_repute_full_name
 	#
 end
 
-all_repute_full_name
 
+# CHAIN1 = 
+# Programme pour sortir les listes de noms et emails.
+# 
 
 def chain1
 page = Nokogiri::HTML(open("https://www.voxpublic.org/spip.php?page=annuaire&cat=deputes&pagnum=600"))
@@ -62,45 +68,25 @@ page = Nokogiri::HTML(open("https://www.voxpublic.org/spip.php?page=annuaire&cat
 	
 		liste_mail << page.xpath('//li[5]/a[1]').text
         full_name_m << page.xpath('//li[1]/h2').text.gsub('Mme ', ' ').gsub('M ', ' ')
-		
 			
 	
 		array_1 = [["first_name","last_name", "email"]]
-		
-			
 			
 		array_1 = array_1 * 557
 		full_name = []
 		full_name_final = []
 
-		#full_name << full_name_m[0].split[1...3]
-		#full_name_final << full_name[0][0..2]
-		
-	
-		
-		#puts liste_mail[0][11...-74].split.length
-		
-
-		
-		
 
 		liste_mail_custom << liste_mail[0][11...-74].split(" ")
-		#full_name_final << full_name_m.split('')
-		#puts liste_mail_custom[0].class
 		full_name_final << full_name_m[0].split(" ").flatten
 
-		#puts liste_mail_custom
 		
 		a = Hash[array_1[0].zip(full_name_final[0])]
 		puts full_name_final
 		puts liste_mail_custom
-		#puts full_name_final.inspect
-		#puts liste_mail_custom.inspect
-
-
 
 
 end
 
 chain1
-all_repute_full_name
+all_depute_full_name
