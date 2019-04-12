@@ -6,6 +6,9 @@ https://www.youtube.com/watch?v=F0IbjVq-fgs
 SCRAPPING DE SITE WEB
 
 - Scrappeur fou : Projet THP
+  - Dark Trader
+  - Mairie christmas
+  - Cher député
 
 - Scrapping: codes test avec cours
 
